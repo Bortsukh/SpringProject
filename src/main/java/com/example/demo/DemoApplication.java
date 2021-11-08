@@ -20,21 +20,11 @@ public class DemoApplication {
 		ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
 
 		BreedDao dao = ctx.getBean(BreedDao.class);
-
-		dao.createBreed(new Breed(2L, "ivan"));
-
-		System.out.println("All count " + dao.count());
-
-		dao.delete(2);
-
-		System.out.println("All count " + dao.count());
-
-		Console.main(args);
-
+//		dao.createBreed(new Breed(2L, "ivan"));
+//		dao.delete(2);
 		AnimalDao animalDao = ctx.getBean(AnimalDao.class);
-		animalDao.createAnimal(new Animal(2L, "Hex", 3.5, 4L));
-
+//		animalDao.createAnimal(new Animal(2L, "Hex", 3.5, 4L));
 		OwnerDao ownerDao = ctx.getBean(OwnerDao.class);
-		ownerDao.createOwner(new Owner(2L, "Stan", 1L));
+//		ownerDao.createOwner(new Owner(2L, "Stan", 1L));
 	}
 }

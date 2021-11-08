@@ -49,7 +49,7 @@ public class AnimalDaoImpl implements AnimalDao {
         return jdbc.queryForObject("select count(*) from animal", Integer.class);
     }
 
-    private static class AnimalMapper implements RowMapper<Animal> {
+    static class AnimalMapper implements RowMapper<Animal> {
         @Override
         public Animal mapRow(ResultSet resultSet, int i) throws SQLException {
             long id = resultSet.getLong("animal_id");
