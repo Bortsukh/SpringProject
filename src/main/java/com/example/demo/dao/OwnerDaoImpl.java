@@ -20,10 +20,11 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public void createOwner(Owner owner) {
-        jdbc.update("insert into owner (OWNER_ID, `NICK_OWNER`, ANIMAL_ID) values (?, ?, ?)",
+        jdbc.update("insert into owner (OWNER_ID, `NICK_OWNER`, ANIMAL_ID, EMAIL) values (?, ?, ?, ?)",
                     owner.getOwnerId(),
                     owner.getNickOwner(),
-                    owner.getAnimalId());
+                    owner.getAnimalId(),
+                    owner.getEmail());
     }
 
     @Override
@@ -38,10 +39,11 @@ public class OwnerDaoImpl implements OwnerDao {
 
     @Override
     public void updateOwnerById(Owner owner) {
-        jdbc.update("update animal set nick_owner = ?, animal_id = ? where owner_id = ?",
+        jdbc.update("update animal set nick_owner = ?, animal_id = ?, email = ? where owner_id = ?",
                     owner.getNickOwner(),
                     owner.getAnimalId(),
-                    owner.getOwnerId());
+                    owner.getOwnerId(),
+                    owner.getEmail());
     }
 
     @Override
@@ -66,7 +68,8 @@ public class OwnerDaoImpl implements OwnerDao {
             long id = resultSet.getLong("owner_id");
             String name = resultSet.getString("nick_owner");
             long idAnimal = resultSet.getLong("animal_id");
-            return new Owner(id, name, idAnimal);
+            String email = resultSet.getString("email");
+            return new Owner(id, name, idAnimal,email);
         }
     }
 }

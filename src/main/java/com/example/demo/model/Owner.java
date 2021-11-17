@@ -10,4 +10,5 @@ public class Owner {
     private long ownerId;
     private String nickOwner;
     private long animalId;
+    private String email;
 }

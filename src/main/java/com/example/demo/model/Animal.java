@@ -12,4 +12,6 @@ public class Animal {
     private String nickName;
     private double weight;
     private long breedId;
+    private String place;
+    private byte[] photo;
 }

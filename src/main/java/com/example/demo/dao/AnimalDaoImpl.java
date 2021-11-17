@@ -18,11 +18,13 @@ public class AnimalDaoImpl implements AnimalDao {
 
     @Override
     public void createAnimal(Animal animal) {
-        jdbc.update("insert into animal (ANIMAL_ID, `NICK_NAME`, WEIGHT, BREED_ID) values (?, ?, ?, ?)",
+        jdbc.update("insert into animal (ANIMAL_ID, `NICK_NAME`, WEIGHT, BREED_ID, ANIMAL_PLACE, PHOTO) values (?, ?, ?, ?, ?, ?)",
                     animal.getAnimalId(),
                     animal.getNickName(),
                     animal.getWeight(),
-                    animal.getBreedId());
+                    animal.getBreedId(),
+                    animal.getPlace(),
+                    animal.getPhoto());
     }
 
     @Override
@@ -32,11 +34,13 @@ public class AnimalDaoImpl implements AnimalDao {
 
     @Override
     public void updateAnimal(Animal animal) {
-        jdbc.update( "update animal set nick_name = ?, weight = ?, breed_id = ? where animal_id = ?",
+        jdbc.update( "update animal set nick_name = ?, weight = ?, breed_id = ?, animal_place = ?, photo = ? where animal_id = ?",
                      animal.getNickName(),
                      animal.getWeight(),
                      animal.getBreedId(),
-                     animal.getAnimalId());
+                     animal.getAnimalId(),
+                     animal.getPlace(),
+                     animal.getPhoto());
     }
 
     @Override
@@ -56,7 +60,9 @@ public class AnimalDaoImpl implements AnimalDao {
             String name = resultSet.getString("nick_name");
             double weight = resultSet.getDouble("weight");
             long idBreed = resultSet.getLong("breed_id");
-            return new Animal(id, name, weight, idBreed);
+            String place = resultSet.getString("animal_place");
+            byte[] photo = resultSet.getBytes("photo");
+            return new Animal(id, name, weight, idBreed, place, photo);
         }
     }
 }
