@@ -14,4 +14,5 @@ public class Animal {
     private long breedId;
     private String place;
     private byte[] photo;
+    private String event;
 }
